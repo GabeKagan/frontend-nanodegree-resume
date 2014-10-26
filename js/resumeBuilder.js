@@ -19,7 +19,6 @@ var formattedContact = HTMLcontactGeneric.replace("%data%",bio.contact);
 var formattedImg = HTMLbioPic.replace("%data%",bio.picture);
 var formattedMessage = HTMLWelcomeMsg.replace("%data%",bio.message);
 
-
 //Detailed contacts.
 var contacts = {
     "phone": "555-555-5555",
@@ -29,13 +28,19 @@ var contacts = {
     "location": "Westford, MA"
 };
 
-
 //Add the more detailed contacts!
 var formattedMobile = HTMLmobile.replace("%data%",contacts.phone);
 var formattedEmail = HTMLemail.replace("%data%",contacts.email);
 var formattedGithub = HTMLgithub.replace("%data%",contacts.github);
 var formattedTwitter = HTMLtwitter.replace("%data%",contacts.twitter);
 var formattedLocation = HTMLlocation.replace("%data%",contacts.location);
+
+//Make this look better.
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+$("#header").append(formattedImg);
+$("#header").append(formattedMessage);
+$("#header").append(HTMLskillsStart);
 
 //Long list of jobs, mostly fake.
 var jobList = {
@@ -67,6 +72,25 @@ var jobList = {
         "dates":"2Whenever",
         "location":"2Locationland",
         "description":"2This is also a placeholder."
+    },
+
+    //Work bloc needs special code. Encapsulate this eventually.
+    display: function() {
+        for (var job in jobList) {
+
+            $("#workExperience").append(HTMLworkStart);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%",(jobList[job]).title);
+            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%",(jobList[job]).employer);
+            //Concatenate this and add it to the page in one clean operation
+            $(".work-entry:last").append(formattedWorkEmployer + formattedWorkTitle);
+            //Add everything else now
+            var formattedWorkDates = HTMLworkDates.replace("%data%",(jobList[job]).dates);
+            $(".work-entry:last").append(formattedWorkDates);
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%",(jobList[job]).location);
+            $(".work-entry:last").append(formattedWorkLocation);
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%",(jobList[job]).description);
+            $(".work-entry:last").append(formattedWorkDescription);        
+        }
     }
 }
 
@@ -137,15 +161,9 @@ var projects = {
     
 }
 projects.display();
+jobList.display();
 
 //Add all this data to the page. Change where it's appended. 
-
-//Make this look better.
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").append(formattedImg);
-$("#header").append(formattedMessage);
-$("#header").append(HTMLskillsStart);
 
 //Append a skill list if we have one.
 //For each instance, replace either the placeholder %data%, or the last thing we had.
@@ -164,30 +182,7 @@ $("#topContacts").append(formattedGithub);
 $("#topContacts").append(formattedTwitter);
 $("#topContacts").append(formattedLocation);
 
-//Work bloc needs special code. Encapsulate this eventually.
-function displayWork() {
-    for (var job in jobList) {
 
-        $("#workExperience").append(HTMLworkStart);
-        var formattedWorkTitle = HTMLworkTitle.replace("%data%",(jobList[job]).title);
-        var formattedWorkEmployer = HTMLworkEmployer.replace("%data%",(jobList[job]).employer);
-        //Concatenate this and add it to the page in one clean operation
-        $(".work-entry:last").append(formattedWorkEmployer + formattedWorkTitle);
-        //Add everything else now
-        var formattedWorkDates = HTMLworkDates.replace("%data%",(jobList[job]).dates);
-        $(".work-entry:last").append(formattedWorkDates);
-        var formattedWorkLocation = HTMLworkLocation.replace("%data%",(jobList[job]).location);
-        $(".work-entry:last").append(formattedWorkLocation);
-        var formattedWorkDescription = HTMLworkDescription.replace("%data%",(jobList[job]).description);
-        $(".work-entry:last").append(formattedWorkDescription);
-
-
-        
-    }
-
-}
-
-displayWork();
 
 //Rewrite to use any list that has location data later
 function locationizer(locationizerList) {
@@ -216,6 +211,8 @@ $(".education-entry").append(formattedSchoolLocation);
 $(".education-entry").append(formattedSchoolMajor);
 
 
-$("#letsConnect").append(formattedContact); //Contact info goes at the bottom! 
+$("#letsConnect").append(formattedContact); //Contact info goes at the bottom!
+//This doesn't work. It shows a blank (grey) application.
+$("#mapDiv").append(googleMap);
 
 //$("#main").append(internationalizeButton); 
