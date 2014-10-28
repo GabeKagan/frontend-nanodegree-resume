@@ -58,95 +58,106 @@ var bio = {
 };
 
 //Long list of jobs, mostly fake.
-var jobList = {
-    
-    work: {
-        "employer":"InstaEDU",
-        "title":"Contract Tutor",
-        "dates":"May 2014 -> Present",
-        "location":"Virtual",
-        "description":"Blah blah blah. Tutor tutor. This is a placeholder."   
-    },
-    work2: {
-        "employer":"Nobody",
-        "title":"Not A Job",
-        "dates":"Never",
-        "location":"Nowhere",
-        "description":"It sure pays to not be unemployed!"
-    },
-    work3: {
-        "employer":"Everybody",
-        "title":"Titleholder",
-        "dates":"Whenever",
-        "location":"Locationland",
-        "description":"This is also a placeholder."
-    },
-    work4: {
-        "employer":"2Everybody",
-        "title":"2Titleholder",
-        "dates":"2Whenever",
-        "location":"2Locationland",
-        "description":"2This is also a placeholder."
+var jobs = {
+    jobList: {
+        work: {
+            "employer":"InstaEDU",
+            "title":"Contract Tutor",
+            "dates":"May 2014 -> Present",
+            "location":"Virtual",
+            "description":"I provide online tutoring to students on demand."   
+        },
+        work2: {
+            "employer":"Nobody",
+            "title":"Not A Job",
+            "dates":"Never",
+            "location":"Harrison, OH",
+            "description":"It sure pays to not be unemployed!"
+        },
+        work3: {
+            "employer":"Everybody",
+            "title":"Titleholder",
+            "dates":"Whenever",
+            "location":"Round Rock, TX",
+            "description":"If I put real place names in my location fields, it might make the map happier."
+        },
+        work4: {
+            "employer":"2Everybody",
+            "title":"2Titleholder",
+            "dates":"2Whenever",
+            "location":"Erie, PA",
+            "description":"This is also a placeholder."
+        },
     },
 
     display: function() {
-        for (var job in jobList) {
-
+        for (var job in jobs.jobList) {
             $("#workExperience").append(HTMLworkStart);
-            var formattedWorkTitle = HTMLworkTitle.replace("%data%",(jobList[job]).title);
-            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%",(jobList[job]).employer);
+            var formattedWorkTitle = HTMLworkTitle.replace("%data%",(jobs.jobList[job]).title);
+            var formattedWorkEmployer = HTMLworkEmployer.replace("%data%",(jobs.jobList[job]).employer);
             //Concatenate this and add it to the page in one clean operation
             $(".work-entry:last").append(formattedWorkEmployer + formattedWorkTitle);
             //Add everything else now
-            var formattedWorkDates = HTMLworkDates.replace("%data%",(jobList[job]).dates);
+            var formattedWorkDates = HTMLworkDates.replace("%data%",(jobs.jobList[job]).dates);
             $(".work-entry:last").append(formattedWorkDates);
-            var formattedWorkLocation = HTMLworkLocation.replace("%data%",(jobList[job]).location);
+            var formattedWorkLocation = HTMLworkLocation.replace("%data%",(jobs.jobList[job]).location);
             $(".work-entry:last").append(formattedWorkLocation);
-            var formattedWorkDescription = HTMLworkDescription.replace("%data%",(jobList[job]).description);
+            var formattedWorkDescription = HTMLworkDescription.replace("%data%",(jobs.jobList[job]).description);
             $(".work-entry:last").append(formattedWorkDescription);        
         }
     }
 }
 
-//Education. May need reformatting.
-var school = {
-    "name":"University of Rochester",
-    "degree":"Bachelor of Arts",
-    "dates":"Fall 2009 -> Summer 2013",
-    "location":"Rochester, New York, United States of America",
-    "major":"History",
+var schools = {
+    schoolList: {
+        school1: {
+            "name":"University of Rochester",
+            "degree":"Bachelor of Arts",
+            "dates":"Fall 2009 -> Summer 2013",
+            "location":"Rochester, New York, United States of America",
+            "major":"History",
+        },
+        school2: {
+            "name":"Udacity Nanodegree Program",
+            "degree":"Front End Web Development",
+            "dates":"October 2014 -> Ongoing",
+            "location":"Virtual",
+            "major":"?",
+        },
+    },
 
     display: function(){
+        for (var school in schools.schoolList) {
+            $("#education").append(HTMLschoolStart);
+            var formattedSchoolName = HTMLschoolName.replace("%data%",schools.schoolList[school].name);
+            $(".education-entry:last").append(formattedSchoolName);
+            var formattedSchoolDegree = HTMLschoolDegree.replace("%data%",schools.schoolList[school].degree);
+            $(".education-entry:last").append(formattedSchoolDegree);
+            var formattedSchoolDates = HTMLschoolDates.replace("%data%",schools.schoolList[school].dates);
+            $(".education-entry:last").append(formattedSchoolDates);
+            var formattedSchoolLocation = HTMLschoolLocation.replace("%data%",schools.schoolList[school].location);
+            $(".education-entry:last").append(formattedSchoolLocation);
+            var formattedSchoolMajor = HTMLschoolMajor.replace("%data%",schools.schoolList[school].major);
+            $(".education-entry:last").append(formattedSchoolMajor);
+        }
 
-        $("#education").append(HTMLschoolStart);
-        var formattedSchoolName = HTMLschoolName.replace("%data%",school.name);
-        $(".education-entry").append(formattedSchoolName);
-        var formattedSchoolDegree = HTMLschoolDegree.replace("%data%",school.degree);
-        $(".education-entry").append(formattedSchoolDegree);
-        var formattedSchoolDates = HTMLschoolDates.replace("%data%",school.dates);
-        $(".education-entry").append(formattedSchoolDates);
-        var formattedSchoolLocation = HTMLschoolLocation.replace("%data%",school.location);
-        $(".education-entry").append(formattedSchoolLocation);
-        var formattedSchoolMajor = HTMLschoolMajor.replace("%data%",school.major);
-        $(".education-entry").append(formattedSchoolMajor);
     }
 };
 
 //Projects.
 var projects = {
-
     projectList:  {
-
+        //Work on Project 1's formatting.
         project1: {
-        "name":"Placeholder",
-        "dates": "Dates are a type of fruit.",
-        "description": "I did stuff.",
-        "image": "images/350x350.gif"
+        "name":"Planepacked - Quantum Artifacts",
+        "dates": "February -> July 2012",
+        "description": "One of my earlier musical compilations. Quantum Artifacts is an EP of chiptune metal freely available in multiple places on the internet. For the best experience, download it here: <a href='https://www.jamendo.com/en/list/a112206/planepacked-ii-quantum-artifacts'>https://www.jamendo.com/en/list/a112206/planepacked-ii-quantum-artifacts</a>",
+        "image": "images/music.jpg"
         },
         project2: {
-        "name":"Placeholder 2",
-        "dates": "I wonder if dates are any good.",
-        "description": "I did more stuff.",
+        "name":"Placeholder",
+        "dates": "All times",
+        "description": "Coming soon! Check back often.",
         "image": "images/350x350.gif"
         },
         project3: {
@@ -156,9 +167,7 @@ var projects = {
         "image": "images/350x350.gif"
         }
     },
-    //Encapsulation? Can you have a function inside an object?
-    //When expressed as projects.display(), this adds an extra blank project that shouldn't exist.
-    //It's parsing the function as part of the project array.
+
     display: function() {
         for (var newProject in projects.projectList)
         {
@@ -178,8 +187,8 @@ var projects = {
 //Add all this data to the page. Change where it's appended?
 bio.display();
 projects.display();
-jobList.display();
-school.display();
+jobs.display();
+schools.display();
 
 //"Educational" functions.
 
@@ -194,7 +203,8 @@ $(document).click(function(loc) {
 function locationizer(locationizerList) {
     var locationArray = [];
     for (var workEntry in locationizerList) {
-       locationArray.push(locationizerList[workEntry].location);
+        //Tossing out "virtual".
+        if(workEntry !== "Virtual"){locationArray.push(locationizerList[workEntry].location);} 
     }
     return locationArray; 
 }
