@@ -1,8 +1,8 @@
 
-//Biography formatting block
+//Biography formatting block. ENCAPSULATE!
 var bio = {
     "name": "Gabe Kagan",
-    "role": "Placeholder role",
+    "role": "Web Developer and Content Creator",
     "age": 22,
     "contact": "Contact placeholder",
 
@@ -14,47 +14,48 @@ var bio = {
         "location": "Westford, MA"
     },
 
-    "picture": "images/197x148.gif",
+    "picture": "images/photo.jpg",
     "message": "Doopy doopy doop",
     "skills": ["Placeholder","More placeholder","Are you done yet?", "Guess not.", 
-        "This one shouldn't even show."]
-};
+        "This one shouldn't even show."],
 
-var formattedName = HTMLheaderName.replace("%data%",bio.name);
-var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
-var formattedContact = HTMLcontactGeneric.replace("%data%",bio.contact); //Remove? Rebuild?
-var formattedImg = HTMLbioPic.replace("%data%",bio.picture);
-var formattedMessage = HTMLWelcomeMsg.replace("%data%",bio.message);
+    display: function(){
+        var formattedName = HTMLheaderName.replace("%data%",bio.name);
+        var formattedRole = HTMLheaderRole.replace("%data%",bio.role);
+        var formattedContact = HTMLcontactGeneric.replace("%data%",bio.contact); //Remove? Rebuild?
+        var formattedImg = HTMLbioPic.replace("%data%",bio.picture);
+        var formattedMessage = HTMLWelcomeMsg.replace("%data%",bio.message);
 
-//Add the more detailed contacts!
-var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.phone);
-var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
-var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+        $("#header").prepend(formattedRole);
+        $("#header").prepend(formattedName);
+        $("#header").append(formattedImg);
+        $("#header").append(formattedMessage);
+        $("#header").append(HTMLskillsStart);
 
-//Next encapsulation target.
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#header").append(formattedImg);
-$("#header").append(formattedMessage);
-$("#header").append(HTMLskillsStart);
+        var formattedMobile = HTMLmobile.replace("%data%",bio.contacts.phone);
+        var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+        var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+        var formattedTwitter = HTMLtwitter.replace("%data%",bio.contacts.twitter);
+        var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+        $("#topContacts").append(formattedMobile);
+        $("#topContacts").append(formattedEmail);
+        $("#topContacts").append(formattedGithub);
+        $("#topContacts").append(formattedTwitter);
+        $("#topContacts").append(formattedLocation);
+        $("#letsConnect").append(formattedContact); //More contact info goes at the bottom!
 
-$("#topContacts").append(formattedMobile);
-$("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedGithub);
-$("#topContacts").append(formattedTwitter);
-$("#topContacts").append(formattedLocation);
-
-//Append a skill list if we have one.
-//Refactor out the boolean compare. ".replace" isn't changing the original.
-if(bio.skills.length > 0) {
-    for( i = 0; i < bio.skills.length; i++) {
-        if (i === 4) { break }  //Don't append more than 4 items.
-        var formattedSkills = HTMLskills.replace(("%data%" || bio.skills[i-1]),bio.skills[i]); 
-        $("#header").append(formattedSkills);
+        //Append a skill list if we have one.
+        //Refactor out the boolean compare. ".replace" isn't changing the original.
+        //CSS needs to be changed.
+        if(bio.skills.length > 0) {
+            for( i = 0; i < bio.skills.length; i++) {
+                if (i === 4) { break }  //Don't append more than 4 items in order to keep formatting easy.
+                var formattedSkills = HTMLskills.replace(("%data%" || bio.skills[i-1]),bio.skills[i]); 
+                $("#header").append(formattedSkills);
+            } 
+        }
     } 
-}
+};
 
 //Long list of jobs, mostly fake.
 var jobList = {
@@ -131,13 +132,6 @@ var school = {
     }
 };
 
-//Note to self: This uses an anonymous function.
-$(document).click(function(loc) { 
-    var x = loc.pageX;
-    var y = loc.pageY;
-    logClicks(x,y);
-});
-
 //Projects.
 var projects = {
 
@@ -179,14 +173,22 @@ var projects = {
             $(".project-entry:last").append(formattedProjectImage);
         }
     }
-    
 }
 
 //Add all this data to the page. Change where it's appended?
+bio.display();
 projects.display();
 jobList.display();
 school.display();
 
+//"Educational" functions.
+
+//Note to self: This uses an anonymous function.
+$(document).click(function(loc) { 
+    var x = loc.pageX;
+    var y = loc.pageY;
+    logClicks(x,y);
+});
 
 //Rewrite to use any list that has location data later
 function locationizer(locationizerList) {
@@ -197,8 +199,6 @@ function locationizer(locationizerList) {
     return locationArray; 
 }
 
-//Work bloc ends here.
-
 //Capitalizes the last name in case you want to do that for some reason.
 function inName(iName) {
     var changeName = bio.name.split(" ");
@@ -207,10 +207,6 @@ function inName(iName) {
     return inNameResult;
 }
 
-
-
-$("#letsConnect").append(formattedContact); //Contact info goes at the bottom!
-//This doesn't work. It shows a blank (grey) application.
+//This doesn't work. It takes an incredibly long time to load. Fix it!
 $("#mapDiv").append(googleMap);
-
 //$("#main").append(internationalizeButton); 
