@@ -218,5 +218,6 @@ function inName(iName) {
 }
 
 //This doesn't work. It takes an incredibly long time to load. Fix it!
-$("#mapDiv").append(googleMap);
+//$("#mapDiv").append(googleMap);
+
 //$("#main").append(internationalizeButton); 
