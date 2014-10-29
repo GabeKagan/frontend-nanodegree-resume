@@ -15,7 +15,7 @@
 h1 {
 
   font-size: 40px;
-  color: #F5A623;
+  color: #FFFF77; /* Formerly orange, now yellow */
   line-height: 48px;
   display: inline;
 }
@@ -23,7 +23,7 @@ h1 {
 h2 {
   font-style: bold;
   font-size: 24px;
-  color: #999999;
+  color: #444444; /* Darkened for better contrast */
   line-height: 29px;
   padding: 10px;
 }
@@ -52,7 +52,7 @@ h2, h3, h4, h5 {
 .date-text {
   font-style: italic;
   font-size: 14px;
-  color: #999999;
+  color: #444444; /* Darkened for better contrast */
   line-height: 16px;
   float: left;
 }
@@ -60,7 +60,7 @@ h2, h3, h4, h5 {
 .location-text {
   font-style: italic;
   font-size: 14px;
-  color: #999999;
+  color: #444444; /* Darkened for better contrast */
   line-height: 16px;
   float: right;
 
@@ -87,7 +87,7 @@ a {
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  color: #FFFF77; /* All instances of #F5AE23 are being replaced with #EEEE77.*/
   display: none;
 }
 
@@ -96,11 +96,11 @@ a {
 }
 
 .orange {
-  background-color: #F5AE23;
+  background-color: #FFFF77;
 }
 
 .orange-text {
-  color: #F5AE23;
+  color: #FFFF77;
 }
 
 .white-text {
@@ -116,6 +116,21 @@ a {
 
 .dark-gray {
   background-color: #4A4A4A;
+}
+
+/* Added by Gabe */
+.blue {
+  background-color: #BBBBFF;
+  padding-bottom: 10px;
+  clear:both;
+}
+
+.lightblue {
+  background-color: #DDDDFF;
+}
+
+.lightyellow {
+  background-color: #FFFF77;
 }
 
 /* TODO: Replace with image later */

@@ -42,7 +42,12 @@ var bio = {
         $("#topContacts").append(formattedGithub);
         $("#topContacts").append(formattedTwitter);
         $("#topContacts").append(formattedLocation);
-        $("#letsConnect").append(formattedContact); //More contact info goes at the bottom!
+        //Duplicate of the contact info at the bottom?
+        $("#footerContacts").append(formattedMobile);
+        $("#footerContacts").append(formattedEmail);
+        $("#footerContacts").append(formattedGithub);
+        $("#footerContacts").append(formattedTwitter);
+        $("#footerContacts").append(formattedLocation);
 
         //Append a skill list if we have one.
         //Refactor out the boolean compare. ".replace" isn't changing the original.
@@ -64,8 +69,8 @@ var jobs = {
             "employer":"InstaEDU",
             "title":"Contract Tutor",
             "dates":"May 2014 -> Present",
-            "location":"Virtual",
-            "description":"I provide online tutoring to students on demand."   
+            "location":"Westford, MA",
+            "description":"I provide online tutoring to students on demand. Virtual job."   
         },
         work2: {
             "employer":"Nobody",
@@ -118,10 +123,10 @@ var schools = {
             "major":"History",
         },
         school2: {
-            "name":"Udacity Nanodegree Program",
+            "name":"Udacity Online Nanodegree Program",
             "degree":"Front End Web Development",
             "dates":"October 2014 -> Ongoing",
-            "location":"Virtual",
+            "location":"Westford, MA",
             "major":"?",
         },
     },
@@ -218,6 +223,6 @@ function inName(iName) {
 }
 
 //This doesn't work. It takes an incredibly long time to load. Fix it!
-//$("#mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);
 
 //$("#main").append(internationalizeButton); 

@@ -90,16 +90,12 @@ $(document).click(function(loc) {
   // your code goes here!
 });
 
-
-
 /*
 This is the fun part. Here's where we generate the custom Google Map for the website.
 See the documentation below for more details.
 https://developers.google.com/maps/documentation/javascript/reference
 */
 var map;    // declares a global map variable
-
-
 /*
 Start here! initializeMap() is called when page is loaded.
 */
@@ -108,38 +104,33 @@ function initializeMap() {
   var locations;        
 
   var mapOptions = {
-    disableDefaultUI: true
+    disableDefaultUI: true,
+    zoom: 8 //Hopefully this will make the map load and display properly.
   };
 
   // This next line makes `map` a new Google Map JavaScript Object and attaches it to
   // <div id="map">, which is appended as part of an exercise late in the course.
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
-
   /*
   locationFinder() returns an array of every location string from the JSONs
   written for bio, education, and work.
   */
   function locationFinder() {
-    
     // initializes an empty array
     var locations = [];
-
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
-    
     // iterates through school locations and appends each location to
     // the locations array
-    for (var school in education.schools) {
-      locations.push(education.schools[school].location);
+    for (var school in schools.schoolList) {
+      locations.push(schools.schoolList[school].location);
     }
-
     // iterates through work locations and appends each location to
     // the locations array
-    for (var job in work.jobs) {
-      locations.push(work.jobs[job].location);
+    for (var job in jobs.jobList) {
+      locations.push(jobs.jobList[job].location);
     }
-
     return locations;
   }
 
@@ -167,12 +158,12 @@ function initializeMap() {
     // or hover over a pin on a map. They usually contain more information
     // about a location.
     var infoWindow = new google.maps.InfoWindow({
-      content: name
+      content: name //Might be worth it to add more stuff.
     });
 
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
-      // your code goes here!
+      infoWindow.open(map, marker);//NEEDS MORE WORK.
     });
 
     // this is where the pin actually gets added to the map.
@@ -193,13 +184,11 @@ function initializeMap() {
       createMapMarker(results[0])
     }
   }
-
   /*
   pinPoster(locations) takes in the array of locations created by locationFinder()
   and fires off Google place searches for each location
   */
   function pinPoster(locations) {
-
     // creates a Google place search service object. PlacesService does the work of
     // actually searching for location data.
     var service = new google.maps.places.PlacesService(map);
@@ -211,32 +200,30 @@ function initializeMap() {
       var request = {
         query: locations[place]
       }
-
       // Actually searches the Google Maps API for location data and runs the callback 
       // function with the search results after each search.
       service.textSearch(request, callback);
     }
   }
-
   // Sets the boundaries of the map based on pin locations
   window.mapBounds = new google.maps.LatLngBounds();
-
   // locations is an array of location strings returned from locationFinder()
   locations = locationFinder();
-
   // pinPoster(locations) creates pins on the map for each location in
   // the locations array
   pinPoster(locations);
-  
 };
 
 /*
 Uncomment all the code below when you're ready to implement a Google Map!
 */
 
-// Calls the initializeMap() function when the page loads
-window.addEventListener('load', initializeMap);
+
+window.addEventListener('load', initializeMap); // Calls the initializeMap() function when the page loads
 // Vanilla JS way to listen for resizing of the window and adjust map bounds
 window.addEventListener('resize', function(e) {
   map.fitBounds(mapBounds);   // Make sure the map bounds get updated on page resize
 });
+google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+});  
