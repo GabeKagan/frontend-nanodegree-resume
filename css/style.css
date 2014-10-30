@@ -158,9 +158,15 @@ ul {
 
 .biopic {
   float: left;
-  padding: 10px;
+  padding: 20px;
   width: 200px;
   display: none;
+}
+
+.projectpic {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 img {

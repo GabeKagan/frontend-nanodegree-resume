@@ -15,9 +15,9 @@ var bio = {
     },
 
     "picture": "images/photo.jpg",
-    "message": "Doopy doopy doop",
-    "skills": ["Placeholder","More placeholder","Are you done yet?", "Guess not.", 
-        "This one shouldn't even show."],
+    "message": "Howdy, folks!",
+    "skills": ["Web development","Music production","Creative writing", "Academic research", 
+        "If this line shows, something is broken."],
 
     display: function(){
         var formattedName = HTMLheaderName.replace("%data%",bio.name);
@@ -194,9 +194,9 @@ bio.display();
 projects.display();
 jobs.display();
 schools.display();
+$("#mapDiv").append(googleMap);
 
 //"Educational" functions.
-
 //Note to self: This uses an anonymous function.
 $(document).click(function(loc) { 
     var x = loc.pageX;
@@ -204,7 +204,8 @@ $(document).click(function(loc) {
     logClicks(x,y);
 });
 
-//Rewrite to use any list that has location data later
+
+/* Old version of location grabber for educational purposes. helper.js has a better implementation.
 function locationizer(locationizerList) {
     var locationArray = [];
     for (var workEntry in locationizerList) {
@@ -213,6 +214,7 @@ function locationizer(locationizerList) {
     }
     return locationArray; 
 }
+*/
 
 //Capitalizes the last name in case you want to do that for some reason.
 function inName(iName) {
@@ -222,7 +224,6 @@ function inName(iName) {
     return inNameResult;
 }
 
-//This doesn't work. It takes an incredibly long time to load. Fix it!
-$("#mapDiv").append(googleMap);
-
+//This works, but it's not particularly useful.
+//However, I had to code it as part of the associated lessons, so yeah.
 //$("#main").append(internationalizeButton); 
