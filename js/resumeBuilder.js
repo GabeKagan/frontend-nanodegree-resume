@@ -224,6 +224,18 @@ function inName(iName) {
     return inNameResult;
 }
 
+//Minimizer! Based on http://stackoverflow.com/questions/11013237/how-to-maximize-and-minimize-a-div
+//This uses an anonymous function appended to a class.
+$(".minimizeButton").click(function(){
+    if($(this).html() === "Maximize"){
+        $(this).html("Minimize");
+    }
+    else{
+        $(this).html("Maximize");
+    }
+    $(".minimizeContent").slideToggle();
+});
+
 //This works, but it's not particularly useful.
 //However, I had to code it as part of the associated lessons, so yeah.
 //$("#main").append(internationalizeButton); 

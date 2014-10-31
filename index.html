@@ -9,11 +9,6 @@ I can't wait to see the resumes you put together!
 Cameron Pittman, Udacity Course Developer
 -->
 
-<!--
-The <head> of a website generally links to important resources the page will
-need to load. You'll see a lot of <link>s to CSS files for styles and
-<scripts> for JavaScript files to build interactions.
--->
 <head>
   <title>Project 2 - Interactive Resume</title>
   <link href="css/style.css" rel="stylesheet" type="text/css"></link>
@@ -31,15 +26,23 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
       <ul id="topContacts" class='flex-box'></ul>
     </div>
     <div style='clear: both;'></div>
-    <div id="workExperience" class='blue'>
-      <h2>Work Experience</h2>
+
+<!-- This div is going to be minimizable for extracurricular's sake.-->
+    <div class="minimizeMe"> 
+      <div class="minimizeButton">Minimize</div> <!--Click here to minimize and maximize the class below.-->
+      <div class="minimizeContent"> 
+        <div id="workExperience" class='blue'>
+          <h2>Work Experience</h2>
+        </div>
+        <div id="projects" class='lightblue'>
+          <h2>Projects</h2>
+        </div>
+        <div id="education" class='blue'>
+          <h2>Education</h2>
+        </div>
+      </div>
     </div>
-    <div id="projects" class='lightblue'>
-      <h2>Projects</h2>
-    </div>
-    <div id="education" class='blue'>
-      <h2>Education</h2>
-    </div>
+
 <!-- This div isn't even used, so yeah. 
     <div id="skillsChart" class='lightblue'>
       <h2>Skills Chart</h2>
@@ -59,7 +62,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <script src="js/resumeBuilder.js"></script>
   <script type="text/javascript">
 
-//Oh man, editing the DOM.
+//If an element is empty, make it black.
   if(document.getElementsByClassName("flex-item").length === 0) {
     document.getElementById("topContacts").style.backgroundColor = "#000000";
   }

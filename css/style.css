@@ -11,6 +11,12 @@
   padding-right: 5%;
 }
 
+/* CSS for the minimizer. See index and resumeBuilder for more info.*/
+.minimizeButton {
+    background: #F3F3F3;
+    height: 25px;
+    width: 100%;
+}
 
 h1 {
 
