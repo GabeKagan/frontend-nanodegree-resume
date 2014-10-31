@@ -11,11 +11,18 @@
   padding-right: 5%;
 }
 
-/* CSS for the minimizer. See index and resumeBuilder for more info.*/
+/* CSS for the minimizer. See index and resumeBuilder for more info.
+   Needs further beautification.
+*/
 .minimizeButton {
-    background: #F3F3F3;
-    height: 25px;
-    width: 100%;
+    background: #808080;
+    height: 50px;
+    font-size:30px;
+    display: inline;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+    vertical-align: center;
 }
 
 h1 {
@@ -86,7 +93,6 @@ a {
 }
 
 .welcome-message {
-  font-style: italic;
   font-size: 18px;
   color: #F3F3F3;
   line-height: 28px;
@@ -124,7 +130,7 @@ a {
   background-color: #4A4A4A;
 }
 
-/* Added by Gabe */
+/* Blues and light yellow added by Gabe */
 .blue {
   background-color: #BBBBFF;
   padding-bottom: 10px;
@@ -139,8 +145,7 @@ a {
   background-color: #FFFF77;
 }
 
-/* TODO: Replace with image later */
-#header {
+#header, #minimizeMe {
   background-color: #484848;
 }
 
