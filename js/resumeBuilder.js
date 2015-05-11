@@ -15,7 +15,7 @@ var bio = {
     },
 
     "picture": "images/photo.jpg",
-    "message": "Howdy, folks!",
+    "message": "For the most up to date information, see my LinkedIn profile.",
     "skills": ["Web development","Music production","Creative writing", "Academic research", 
         "If this line shows, something is broken."],
 
@@ -70,28 +70,7 @@ var jobs = {
             "title":"Contract Tutor",
             "dates":"May 2014 -> Present",
             "location":"Westford, MA",
-            "description":"I provide online tutoring to students on demand. Virtual job."   
-        },
-        work2: {
-            "employer":"Nobody",
-            "title":"Not A Job",
-            "dates":"Never",
-            "location":"Harrison, OH",
-            "description":"It sure pays to not be unemployed!"
-        },
-        work3: {
-            "employer":"Everybody",
-            "title":"Titleholder",
-            "dates":"Whenever",
-            "location":"Round Rock, TX",
-            "description":"If I put real place names in my location fields, it might make the map happier."
-        },
-        work4: {
-            "employer":"2Everybody",
-            "title":"2Titleholder",
-            "dates":"2Whenever",
-            "location":"Erie, PA",
-            "description":"This is also a placeholder."
+            "description":"I provide online tutoring to students on demand. This is a remote/online position."   
         },
     },
 
@@ -125,9 +104,9 @@ var schools = {
         school2: {
             "name":"Udacity Online Nanodegree Program",
             "degree":"Front End Web Development",
-            "dates":"October 2014 -> Ongoing",
+            "dates":"October 2014 -> April 2015",
             "location":"Westford, MA",
-            "major":"?",
+            "major":"N/A",
         },
     },
 
@@ -160,17 +139,11 @@ var projects = {
         "image": "images/music.jpg"
         },
         project2: {
-        "name":"Placeholder",
-        "dates": "All times",
-        "description": "Coming soon! Check back often.",
-        "image": "images/350x350.gif"
+        "name":"Tracker2D",
+        "dates": "April 2015 -> Present",
+        "description": "An HTML5 music sequencer! Tracker2D is inspired by SimTunes and designed to surpass it in power and utility. Try it out! <a href='http://gabekagan.github.io/Tracker2D'>http://gabekagan.github.io/Tracker2D</a>",
+        "image": "images/Tracker2D.png"
         },
-        project3: {
-        "name":"Placeholder 3",
-        "dates": "I really should make up some projects.",
-        "description": "I did even more stuff.",
-        "image": "images/350x350.gif"
-        }
     },
 
     display: function() {
