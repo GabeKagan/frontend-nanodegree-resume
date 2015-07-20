@@ -15,7 +15,7 @@ var bio = {
     },
 
     "picture": "images/photo.jpg",
-    "message": "For the most up to date information, see my LinkedIn profile.",
+    "message": "This resume was created as a basic demonstration of Javascript knowledge and is not intended to serve as my primary resume. For the most up to date information, see my LinkedIn profile.",
     "skills": ["Web development","Music production","Creative writing", "Academic research", 
         "If this line shows, something is broken."],
 
